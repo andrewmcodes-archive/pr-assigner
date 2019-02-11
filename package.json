@@ -13,7 +13,7 @@
     "start": "yarn run build && probot run ./lib/index.js",
     "lint": "tslint --project test",
     "test": "jest --coverage",
-    "test:watch": "jest --watch --notify --notifyMode=change --coverage",
+    "test:watch": "jest --watch --notify --notifyMode=change --coverage"
   },
   "dependencies": {
     "@types/lodash": "^4.14.119",
