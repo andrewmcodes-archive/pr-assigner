@@ -14,7 +14,6 @@
     "lint": "tslint --project test",
     "test": "jest --coverage",
     "test:watch": "jest --watch --notify --notifyMode=change --coverage",
-    "audit": "yarn audit"
   },
   "dependencies": {
     "@types/lodash": "^4.14.119",

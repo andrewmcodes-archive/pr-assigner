@@ -24,6 +24,3 @@ jobs:
       - run:
           name: run lint
           command: yarn run lint
-      - run:
-          name: audit package dependencies
-          command: yarn audit
