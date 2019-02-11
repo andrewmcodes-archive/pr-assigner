@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/workspace
+    docker:
+      - image: circleci/node:8.11.4
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install packages
+          command: yarn
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: run build
+          command: yarn run build
+      - run:
+          name: run test
+          command: yarn test
+      - run:
+          name: run lint
+          command: yarn run lint
+      - run:
+          name: audit package dependencies
+          command: yarn audit
