@@ -4,9 +4,9 @@
   "description": "",
   "author": "Andrew Mason <masonam96@outlook.com>",
   "license": "MIT",
-  "repository": "https://github.com/andrewmcodes/pr-reviewer.git",
-  "homepage": "https://github.com/andrewmcodes/pr-reviewer",
-  "bugs": "https://github.com/andrewmcodes/pr-reviewer/issues",
+  "repository": "https://github.com/andrewmcodes/pr-assigner.git",
+  "homepage": "https://github.com/andrewmcodes/pr-assigner",
+  "bugs": "https://github.com/andrewmcodes/pr-assigner/issues",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "dev": "nodemon --exec \"yarn start\"",
