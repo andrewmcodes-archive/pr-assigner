@@ -77,7 +77,6 @@ describe('handlePullRequest', () => {
     await handlePullRequest(context)
 
     expect(createReviewRequestSpy.mock.calls[0][0].reviewers).toHaveLength(3)
-    // expect(createReviewRequestSpy.mock.calls[0][0].reviewers[0]).toMatch(/reviewer/)
   })
 
   test('adds reviewers to pull requests if the configuration is enabled', async () => {
@@ -99,7 +98,6 @@ describe('handlePullRequest', () => {
 
     await handlePullRequest(context)
 
-    // expect(createReviewRequestSpy.mock.calls[0][0].reviewers).toHaveLength(3)
     const myReviewers = createReviewRequestSpy.mock.calls[0][0].reviewers
     expect(myReviewers).toHaveLength(3)
     expect(myReviewers[0]).toMatch(/reviewer/)
