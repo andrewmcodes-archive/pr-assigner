@@ -1,0 +1,8 @@
+addReviewers: true
+reviewers:
+  - reviewerA
+  - reviewerB
+  - reviewerC
+numberOfReviewers: 0
+skipKeywords:
+  - wip

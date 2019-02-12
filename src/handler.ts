@@ -14,7 +14,7 @@ interface AppConfig {
 export async function handlePullRequest (context: Context): Promise<void> {
   let config: AppConfig | null
 
-  config = await context.config<AppConfig | null>('auto_assign.yml')
+  config = await context.config<AppConfig | null>('pr_reviews.yml')
 
   if (!config) {
     throw new Error('the configuration file failed to load')
