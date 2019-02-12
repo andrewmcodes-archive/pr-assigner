@@ -12,12 +12,12 @@ describe('handlePullRequest', () => {
       payload: {
         action: 'opened',
         number: '1',
-        user: {
-          login: "andrewmcodes"
-        },
         pull_request: {
           number: '1',
-          title: 'test'
+          title: 'test',
+          user: {
+            login: 'andrewmcodes'
+          }
         },
         repository: {
           name: 'auto-assign',
@@ -150,8 +150,8 @@ describe('handlePullRequest', () => {
 
     const myReviewers = createReviewRequestSpy.mock.calls[0][0].reviewers
     expect(myReviewers).toHaveLength(2)
-    let reviewerOne = myReviewers[0]
-    let reviewerTwo = myReviewers[1]
+    const reviewerOne = myReviewers[0]
+    const reviewerTwo = myReviewers[1]
     expect(reviewerOne).not.toMatch(reviewerTwo)
   })
 
