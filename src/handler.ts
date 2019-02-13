@@ -3,11 +3,11 @@ import { chooseUsers, includesSkipKeywords } from './util'
 
 interface AppConfig {
   addReviewers: boolean,
-  addAssignees: boolean,
+  addSecondaryReviewers: boolean,
   reviewers: string[],
-  assignees?: string[],
-  numberOfAssignees?: number,
   numberOfReviewers: number,
+  secondaryReviewers: string[],
+  numberOfSecondaryReviewers: number,
   skipKeywords?: string[]
 }
 
@@ -29,12 +29,18 @@ export async function handlePullRequest (context: Context): Promise<void> {
     context.log('skips adding reviewers')
     return
   }
+  const primaryReviewers = config.reviewers
+  const secondaryReviewers = config.secondaryReviewers
+  const numPrimaryReviewers = config.numberOfReviewers
+  const numSecondaryReviewers = config.numberOfSecondaryReviewers
 
-  const reviewers = chooseUsers(owner, config.reviewers, config.numberOfReviewers)
+  const allReviewers:string[] = primaryReviewers.concat(secondaryReviewers)
+  const totalNumberOfReviewers = numPrimaryReviewers + numSecondaryReviewers
+  const reviewers = chooseUsers(owner, allReviewers, totalNumberOfReviewers)
 
   let result: any
 
-  if (config.addReviewers && reviewers.length > 0) {
+if (allReviewers && totalNumberOfReviewers > 0) {
     try {
       const params = context.issue({
         reviewers

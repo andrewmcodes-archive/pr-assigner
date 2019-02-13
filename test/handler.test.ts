@@ -35,6 +35,9 @@ describe('handlePullRequest', () => {
         addReviewers: true,
         numberOfReviewers: 0,
         reviewers: ['reviewer1', 'reviewer2', 'reviewer3'],
+        addSecondaryReviewers: true,
+        numberOfSecondaryReviewers: 0,
+        secondaryReviewers: ['reviewer4', 'reviewer5', 'reviewer6'],
         skipKeywords: ['wip']
       }
     })
@@ -127,6 +130,32 @@ describe('handlePullRequest', () => {
     const myReviewers = createReviewRequestSpy.mock.calls[0][0].reviewers
     expect(myReviewers).toHaveLength(3)
     expect(myReviewers[0]).toMatch(/reviewer/)
+  })
+
+  test('adds secondary reviewers', async () => {
+    context.config = jest.fn().mockImplementation(async () => {
+      return {
+        addReviewers: true,
+        numberOfReviewers: 2,
+        reviewers: ['reviewer1', 'reviewer2', 'reviewer3'],
+        addSecondaryReviewers: true,
+        numberOfSecondaryReviewers: 2,
+        secondaryReviewers: ['reviewer4', 'reviewer5', 'reviewer6'],
+        skipKeywords: ['wip']
+      }
+    })
+
+    context.github.pullRequests = {
+      // tslint:disable-next-line:no-empty
+      createReviewRequest: jest.fn().mockImplementation(async () => { })
+    } as any
+
+    const createReviewRequestSpy = jest.spyOn(context.github.pullRequests, 'createReviewRequest')
+
+    await handlePullRequest(context)
+
+    const myReviewers = createReviewRequestSpy.mock.calls[0][0].reviewers
+    expect(myReviewers).toHaveLength(4)
   })
 
   test('adds unique reviewers', async () => {
