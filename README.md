@@ -17,3 +17,7 @@ numberOfReviewers: 0
 skipKeywords:
   - wip
 ```
+
+---
+
+*This project was originally forked from [auto-assign](https://github.com/kentaro-m/auto-assign). Many thanks to [kentaro-m](https://github.com/kentaro-m).*
