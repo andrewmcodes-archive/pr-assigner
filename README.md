@@ -13,7 +13,15 @@ reviewers:
   - reviewerA
   - reviewerB
   - reviewerC
-numberOfReviewers: 0
+
+addSecondaryReviewers: true
+secondaryReviewers:
+  - reviewerD
+  - reviewerE
+
+numberOfReviewers: 1
+numberOfSecondaryReviewers: 1
+
 skipKeywords:
   - wip
 ```
